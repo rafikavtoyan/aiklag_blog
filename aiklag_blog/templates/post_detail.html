@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block head_title %}{{ instance.title }} | {{ block.super}}{% endblock head_title %}
+
+{% block content %}
+
+
+
+<div class="col-sm-8 col-sm-offset-2">
+    {% if instance.image %}
+        <img class="img-responsive" src="{{ instance.image.url }}" alt="img">
+    {% endif %}
+    <h1>Title <small>{{instance.publish}}</small></h1>
+    <p>Author: {{ instance.user}}</p>
+    <hr/>
+    <p>
+        <div class="fb-like" data-href="{{ request.build_absolute_url }}" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+    </p>
+    <h3>{{instance.content|linebreaks}}</h3>
+    <div class="fb-comments" data-href="{{ request.build_absolute_url }}" data-numposts="5"></div>
+</div>
+
+{% endblock content %}
+
