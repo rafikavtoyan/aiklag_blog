@@ -1,0 +1,8 @@
+# dependances
+# TODO for the first step create bash script to automate the env configuration
+
+# Ubuntu-14.06
+apt-get install python-dev python-mysqldb libmysqlclient-dev
+
+# Centos-6.7
+
