@@ -8,6 +8,7 @@ from django.conf import settings
 from django.utils import timezone
 from markdown_deux import markdown
 from django.utils.safestring import mark_safe
+from comments.models import Comment
 
 
 def upload_location(instance, filename):
@@ -57,6 +58,11 @@ class Post(models.Model):
         markdown_text = markdown(content)
         return mark_safe(markdown_text)
 
+    @property
+    def comments(self):
+        instance = self
+        qs = Comment.objects.filter_by_instance(instance)
+        return qs
 
 def create_slug(instance, new_slug=None):
     slug = slugify(instance.title)
