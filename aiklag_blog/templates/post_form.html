@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block head_title %}Post Form{% endblock head_title %}
 
+{% block head_extra %}
+{{ form.media}}
+{% endblock head_extra %}
 
 {% block content %}
 

@@ -16,7 +16,9 @@
     <p>
         <div class="fb-like" data-href="{{ request.build_absolute_url }}" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
     </p>
-    <h3>{{instance.content|linebreaks}}</h3>
+    <div class="col-sm-12 content-markdown">
+        {{instance.content|linebreaks}}
+    </div>
     <div class="fb-comments" data-href="{{ request.build_absolute_url }}" data-numposts="5"></div>
 </div>
 

@@ -16,6 +16,7 @@
             {% block style %}
             {% endblock style %}
         </style>
+        {% block head_extra %} {% endblock head_extra %}
     </head>
     <body>
         <div class="messages">
@@ -26,7 +27,9 @@
 
             {% endblock content %}
         </div>
+        <script src="http://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
     </body>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
@@ -37,4 +40,18 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 </script>
+    <script>
+        $(document).ready(function () {
+            $(".content-markdown").each(function () {
+                var content = $(this).text();
+                console.log(content);
+                var marked_content = marked(content);
+                console.log(marked_content);
+                $(this).html(marked_content)
+            })
+            $(".content-markdown img").each(function () {
+                $(this).addClass("img-responsive")
+            })
+        })
+    </script>
 </html>
