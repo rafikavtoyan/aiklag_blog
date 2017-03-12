@@ -13,13 +13,26 @@
     <h1>Title <small>{{instance.publish}}</small></h1>
     <p>Author: {{ instance.user}}</p>
     <hr/>
-    <p>
-        <div class="fb-like" data-href="{{ request.build_absolute_url }}" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
-    </p>
-    <div class="col-sm-12 content-markdown">
-        {{instance.content|linebreaks}}
+    <!--<p>-->
+        <!--<div class="fb-like" data-href="{{ request.build_absolute_url }}" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>-->
+    <!--</p>-->
+    <div class="col-sm-12 post-detail-item">
+        {{instance.get_markdown}}
     </div>
-    <div class="fb-comments" data-href="{{ request.build_absolute_url }}" data-numposts="5"></div>
+    <div>
+        <p class="lead">Comments</p>
+        {% for comment in comments %}
+        <div class="">
+            {{comment.content}}
+            <br>
+            <small>
+                via {{comment.user}} | {{  comment.timestamp|timesince}} ago
+            </small>
+            <hr>
+        </div>
+        {% endfor %}
+    </div>
+    <!--<div class="fb-comments" data-href="{{ request.build_absolute_url }}" data-numposts="5"></div>-->
 </div>
 
 {% endblock content %}

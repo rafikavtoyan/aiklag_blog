@@ -31,27 +31,56 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.6/marked.min.js"></script>
     </body>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.8";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-</script>
+<!--<div id="fb-root"></div>-->
+<!--<script>(function(d, s, id) {-->
+  <!--var js, fjs = d.getElementsByTagName(s)[0];-->
+  <!--if (d.getElementById(id)) return;-->
+  <!--js = d.createElement(s); js.id = id;-->
+  <!--js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.8";-->
+  <!--fjs.parentNode.insertBefore(js, fjs);-->
+<!--}(document, 'script', 'facebook-jssdk'));-->
+<!--</script>-->
     <script>
         $(document).ready(function () {
             $(".content-markdown").each(function () {
                 var content = $(this).text();
-                console.log(content);
                 var marked_content = marked(content);
-                console.log(marked_content);
                 $(this).html(marked_content)
             })
-            $(".content-markdown img").each(function () {
+            $(".post-detail-item img").each(function () {
                 $(this).addClass("img-responsive")
             })
+
+            // preview-title
+            // preview-content
+
+            var contentInput = $("#id_content");
+            
+            function setContent(value) {
+                var markedContent = marked(value)
+                $("#preview-content").html(markedContent);
+                $("#preview-content img").each(function () {
+                    $(this).addClass("img-responsive")
+                })
+            }
+            setContent(contentInput.val())
+            contentInput.keyup(function () {
+                var newContent = $(this).val()
+                setContent(newContent)
+            })
+
+            var titleInput = $("#id_title");
+
+            function setTitle(value) {
+                $("#preview-title").text(value)
+            }
+            setTitle(titleInput.val())
+            
+            titleInput.keyup(function () {
+                var newTitle = $(this).val()
+                setTitle(newTitle)
+            })
+
         })
     </script>
 </html>
