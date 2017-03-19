@@ -81,6 +81,11 @@
                 setTitle(newTitle)
             })
 
+            $(".comment-reply-btn").click(function() {
+                event.preventDefault();
+                $(this).parent().next(".comment-reply").fadeToggle();
+            })
+
         })
     </script>
 </html>

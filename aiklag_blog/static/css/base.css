@@ -5,3 +5,7 @@ h1 {
 div.wmd-panel {
     margin-left: 0;
 }
+
+.comment-reply {
+    display: none;
+}
