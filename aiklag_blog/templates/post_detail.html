@@ -10,7 +10,8 @@
     {% if instance.image %}
         <img class="img-responsive" src="{{ instance.image.url }}" alt="img">
     {% endif %}
-    <h1>Title <small>{{instance.publish}}</small></h1>
+    <h1>{{ title }} <small>{{instance.publish}}</small></h1>
+    <p>Read time: {{ instance.read_time|time:"i" }} minutes</p>
     <p>Author: {{ instance.user}}</p>
     <hr/>
     <!--<p>-->

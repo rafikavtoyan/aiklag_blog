@@ -67,7 +67,7 @@ def post_detail(request, slug=None):
 
     comments = instance.comments
     context = {
-        "title": "detail",
+        "title": instance.title,
         "instance": instance,
         "share_string": share_string,
         "comments": comments,
