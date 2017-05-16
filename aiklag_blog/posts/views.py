@@ -78,8 +78,8 @@ def post_detail(request, slug=None):
 
 
 def post_list(request):
-    queryset_list = Post.objects.active() #.order_by("-timestamp")
-    paginator = Paginator(queryset_list, 2) # Show 25 contacts per page
+    queryset_list = Post.objects.active()  # .order_by("-timestamp")
+    paginator = Paginator(queryset_list, 2)  # Show 25 contacts per page
     page_request_var = "page"
     page = request.GET.get(page_request_var)
     try:

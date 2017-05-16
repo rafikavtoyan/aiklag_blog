@@ -6,3 +6,5 @@ apt-get install python-dev python-mysqldb libmysqlclient-dev
 
 # Centos-6.7
 
+# Create restful api (CRUD)
+# 
