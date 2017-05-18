@@ -5,12 +5,12 @@ class IsOwnerOrReadOnly(BasePermission):
     message = 'You should be the owner of this object.'
     my_safe_methods = ['GET', 'PUT']
 
-    def has_permission(self, request, view):
-        if request.method in self.my_safe_methods:
-            return True
-        return False
+    # def has_permission(self, request, view):
+    #     if request.method in self.my_safe_methods:
+    #         return True
+    #     return False
 
     def has_object_permission(self, request, view, obj):
-        if request.method in SAFE_METHODS:
+        if (request.method in SAFE_METHODS) or request.user == obj.user:
             return True
         return obj.user == request.user
